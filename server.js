@@ -21,7 +21,7 @@ io.on('connection', (socket) => {
   socket.on('join', (name) => {
     // użytkownika, który pojawił się w aplikacji, zapisujemy do serwisu trzymającego listę osób w czacie
     usersService.addUser({
-      id: socket.id,
+       id: socket.id,
       name
     });
   // aplikacja emituje zdarzenie update, które aktualizuje informację na temat listy użytkowników każdemu nasłuchującemu na wydarzenie 'update'
@@ -39,7 +39,7 @@ io.on('connection', (socket) => {
     const {name} = usersService.getUserById(socket.id);
     socket.broadcast.emit('message', {
       text: message.text,
-      from: name
+      from: name,
     });
   });
 });
